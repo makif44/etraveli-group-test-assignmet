@@ -1,0 +1,25 @@
+{
+    "name": "webdriverio-tests",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+        "@babel/core": "^7.16.0",
+        "@babel/preset-env": "^7.16.4",
+        "@babel/register": "^7.16.0",
+        "@wdio/cli": "^7.16.10",
+        "@wdio/cucumber-framework": "^7.13.2",
+        "@wdio/local-runner": "^7.16.10",
+        "@wdio/spec-reporter": "^7.16.9",
+        "chromedriver": "^96.0.0",
+        "fs-extra": "^10.0.0",
+        "multiple-cucumber-html-reporter": "^1.18.3",
+        "wdio-chromedriver-service": "^7.2.2",
+        "wdio-cucumberjs-json-reporter": "^4.1.4"
+    },
+    "scripts": {
+        "wdio": "wdio run wdio.conf.js",
+        "Filtering_airlines": "wdio run wdio.conf.js --cucumberOpts.tagExpression=@airlines",
+        "Filtering_Number_Of_Stop": "wdio run wdio.conf.js --cucumberOpts.tagExpression=@numberOfStop ",
+        "Filtering_Price": "wdio run wdio.conf.js --cucumberOpts.tagExpression=@price "
+    }
+}
