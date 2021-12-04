@@ -13,7 +13,7 @@ Feature: Filter the flight results
     And I click "Clear all" text button
     And I click "Turkish Airline" check point
     Then I should be able to see all airlines as "Turkish Airlines"
-  
+
   @numberOfStop
   Scenario: As a user, I can filter the flight results by number of stops
 
@@ -37,6 +37,16 @@ Feature: Filter the flight results
     And I select "Return" date as "10" "January 2022"
     And I click "Search flights" button
     And I click "Filter by" button
-    And I slide left "Price" handler until 2000
-    Then I should be able to see all standart prices less than 2000
+    And I slide left "Price" handler until 300
+    Then I should be able to see all standart prices less than 100
 
+  @bug
+  Scenario: As a user, When I enter a city which has same name in different states or countries(like Athens), and select second one and find fligts
+
+    Given I am on the main page
+    When I enter "Athens" to the "From" box and select 2. option
+    And I enter "Istanbul" to the "To" box and select 1. option
+    And I select "Departure" date as "05" "January 2022"
+    And I select "Return" date as "10" "January 2022"
+    And I click "Search flights" button
+    Then I should see some flights

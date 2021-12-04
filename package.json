@@ -20,6 +20,7 @@
         "wdio": "wdio run wdio.conf.js",
         "Filtering_airlines": "wdio run wdio.conf.js --cucumberOpts.tagExpression=@airlines",
         "Filtering_Number_Of_Stop": "wdio run wdio.conf.js --cucumberOpts.tagExpression=@numberOfStop ",
-        "Filtering_Price": "wdio run wdio.conf.js --cucumberOpts.tagExpression=@price "
+        "Filtering_Price": "wdio run wdio.conf.js --cucumberOpts.tagExpression=@price ",
+        "bug": "wdio run wdio.conf.js --cucumberOpts.tagExpression=@bug"
     }
 }

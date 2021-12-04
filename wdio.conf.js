@@ -37,7 +37,7 @@ exports.config = {
     
     baseUrl: 'https://www.flightnetwork.com/',
     
-    waitforTimeout: 15000,
+    waitforTimeout: 10000,
     
     connectionRetryTimeout: 120000,
     
@@ -99,8 +99,8 @@ exports.config = {
             durationInMS: true,
             displayReportTime: true,
             useCDN: true,
-            pageTitle: "Cuz Test Report",
-            reportName: "Cuz Translation Test Automation Report",
+            pageTitle: "Flight Network Report",
+            reportName: "Flight Network Test Automation Report",
             metadata: {
                 browser: {
                     name: 'chrome',
@@ -116,20 +116,13 @@ exports.config = {
                 title: 'Run info',
                 data: [{
                         label: 'Project',
-                        value: 'Cuz Translation'
+                        value: 'Flightnetwork'
                     },
                     {
                         label: 'Release',
-                        value: '1.2.3'
+                        value: '1.0.0'
                     },
-                    // {
-                    //     label: 'Execution Start Time',
-                    //     value: startTime
-                    // },
-                    // {
-                    //     label: 'Execution End Time',
-                    //     value: endTime
-                    // }
+                  
                 ]
             }
         });
@@ -138,7 +131,7 @@ exports.config = {
         browser.maximizeWindow();
     },
    
-    afterStep: function ({uri,feature,step}, context, {error,result,duration,passed}) {
+    afterScenario: function (uri, feature, scenario, result, sourceLocation, context) {
         browser.takeScreenshot();
     },
 

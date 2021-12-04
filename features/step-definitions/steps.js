@@ -62,3 +62,8 @@ Then ("I should be able to see all standart prices less than {int}", async (pric
     });
     await expect(standardPrices.length).toEqual(0)
 })
+
+Then ("I should see some flights", async () => {
+   await MainPage.waitForSearchingProgress();
+   await expect(await ResultPage.allSegmentStandardPrice.length).not.toEqual(0)
+})

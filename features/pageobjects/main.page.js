@@ -62,6 +62,10 @@ class MainPage extends Page {
     datesday(day) {
         return $("//div[@class='DayPicker-Body']//div[contains(@aria-label,' "+day+" ')]")
     }
+
+    get progressSpinner() {
+        return $("(//div[contains(@class,'progressSpinner')])[2]")
+    }
     /**
      * function to enter from and to locations
      * @param {*} value location where you want to go from or to
@@ -71,7 +75,6 @@ class MainPage extends Page {
         await this.inputBoxClick(inputBoxName).waitForClickable();
         await this.inputBoxClick(inputBoxName).click()
         await this.inputBoxType(inputBoxName).setValue(value);
-        await browser.pause(2000)
         await this.selectOptionFromInputBoxDropdown(inputBoxName, option).click();
     }
     /**
@@ -81,13 +84,10 @@ class MainPage extends Page {
      * @param {*} month departure or return date's month
      */ 
     async selectDate(arg, day, month) {
-        await browser.pause(3000)     
         await this.inputBoxClick(arg).click();
         console.log(await this.datesMonth.getText());
         while ( await this.datesMonth.getText() !== month) {
-            await browser.pause(500)     
             await this.datesNextButton.click();   
-            await browser.pause(500)         
         }
         await this.datesday(day).click();
     }
@@ -106,6 +106,14 @@ class MainPage extends Page {
     async clickSubButton(button){
         await this.subBtn(button).waitForEnabled({timeouts:10000});
         await this.subBtn(button).click();
+    }
+
+    async waitForSearchingProgress(){
+        await browser.waitUntil(async () =>
+      ! await this.progressSpinner.isExisting(), {
+      timeout: 10000,
+      timeoutMsg: "progress spinner is not done yet"
+    });
     }
 
    
